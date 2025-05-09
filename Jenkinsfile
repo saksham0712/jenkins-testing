@@ -6,13 +6,14 @@ pipeline {
         AWS_CREDENTIALS_ID = "aws-credentials"
         GIT_REPO_URL = "https://github.com/saksham0712/jenkins-testing.git"  // URL of your Git repository
 	BUILD_ID = "latest"
+	GIT_BRANCH = "master"  
+        GIT_CREDENTIALS_ID = "git-creds" 
     }
     stages {
         stage('Checkout Code') {
             steps {
                 script {
-                    // Pull code from the specified Git repository
-                    git url: GIT_REPO_URL
+                    git credentialsId: GIT_CREDENTIALS_ID, url: GIT_REPO_URL, branch: GIT_BRANCH
                 }
             }
         }
