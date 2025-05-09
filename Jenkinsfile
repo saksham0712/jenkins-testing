@@ -21,7 +21,9 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    sh "docker build -t ${IMAGE_NAME}:${BUILD_ID} ."
+		    powershell """		
+                    	docker build -t ${IMAGE_NAME}:${BUILD_ID} .
+		    """
                 }
             }
         }
